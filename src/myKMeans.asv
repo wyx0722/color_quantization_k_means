@@ -1,0 +1,18 @@
+function [centers, labels] = myKMeans(inputData, k)
+    [numData, dimData] = size(inputData);
+    maxValues = max(input_data, [], 1); %maximum of columns
+    
+    centers = rand(k, dim_data) .* repmat(maxValues, k, 1);
+    labels = zeros(1, num_data);
+    
+    MAX_ITERATION = 2^30;
+    
+    for iteration = 1:MAX_ITERATION
+        dataSquare = repmat(sum((inputData .* inputData), 2)', k, 1);
+        centerSquare = repmat(sum((centers .* centers), 2), 1, numData);
+        dataCenterProduct = centers * inputData';
+        distances = dataSqure - 2*dataCenterProduct + centerSquare;
+        
+    end
+end
+
