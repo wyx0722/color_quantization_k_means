@@ -1,13 +1,23 @@
 function  [outputImg, meanColors] = quantizeRGB(origImg, k) 
-%Input must be a 3d matrix, which means RGB image
-%TODO too slow
+%  Given an RGB image, quantize the 3-dimensional RGB space, and map each 
+%  pixel in the input image to its nearest k-means center. 
+%  That is, replace the RGB value at each pixel with its nearest cluster’s average RGB value. 
+
+%  where origImg and outputImg are RGB images, k specifies the number of colors to
+% quantize to, and meanColors is a k x 3 array of the k centers. Matlab tip: if the variable
+im is a 3d matrix containing a color image with numpixels pixels, X = reshape(im,
+numpixels, 3); will yield a matrix with the RGB features as its rows
+
+%  Input must be a 3d matrix, which means RGB image
+
     osize = size(origImg);
     numPixels = osize(1) * osize(2);
     colorMatrix = double(reshape(origImg, numPixels, 3));
     
     %generate k points as centers, until now we use random()
     
-    [meanColors, labels] = myKMeans(colorMatrix, k);
+    [labels, meanColors] = myKMeans(colorMatrix, k);
+    %[labels, meanColors] = kmeans(colorMatrix, k);
     
     outputImg = colorMatrix;
     

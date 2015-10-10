@@ -1,0 +1,10 @@
+function colorQuantizeMain( )
+    fishImage = imread('fish.jpg');
+    K = 3;
+    
+    quantizeShowResult(fishImage, K
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    
+end
+

@@ -1,0 +1,24 @@
+function [histEqual, histClustered] = getHueHists(im, k)
+    osize = size(im);
+    numPixels = osize(1) * osize(2);
+    hsvImage = rgb2hsv(im);
+    
+    
+    
+    colorMatrix = reshape(hsvImage(:,:,1), numPixels, 1); 
+    %This function just gets kmeans from Hue space
+    
+    %generate k points as centers, until now we use random()
+    [histEqual] = hist(colorMatrix, k)
+    
+    
+    [labels, meanHues] = myKMeans(colorMatrix, k);
+    %[labels, meanHues] = kmeans(colorMatrix, k);
+
+    
+    histClustered = zeros(1, k);
+    for i = 1:k
+        histClustered(1, k) = sum(labels == k);
+    end
+end
+

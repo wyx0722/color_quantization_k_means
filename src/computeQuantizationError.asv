@@ -1,0 +1,7 @@
+function [error] = computeQuantizationError(origImg, quantizedImg)
+%  compute the SSD error between the original RGB pixel values and the quantized values
+    squareDifference = (double(origImg) - double(quantizedImg)) .^ 2;
+    error = sum(sum(sum( squareDifference )));
+
+end
+
